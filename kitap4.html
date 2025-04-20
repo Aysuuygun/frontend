@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitap 4 - BookTrack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <div id="aramaKutusu" class="arama-kutusu-gizli">
+        <input type="text" placeholder="Kitap ara...">
+      </div>
+    <nav class="navbar">
+      <span class="hamburger-btn material-symbols-rounded">Menü</span>
+      <a href="index.html" class="logo">
+        <img src="resim/llogoo.jpg" alt="logo">
+        <h2>BookTrack</h2>
+      </a>
+      <ul class="links">
+        <span class="close-btn material-symbols-rounded">close</span>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="#">Hakkımızda</a></li>
+        <li><a href="#">Kitaplar</a></li>
+        <li><a href="#">Popüler</a></li>
+        <li><a href="#">Yardım</a></li>
+      </ul>
+<button id="aramaBtn" class="icon-button material-symbols-rounded" title="Ara">search</button>
+
+<a href="profil.html" class="icon-button" title="Hesap">
+  <span class="material-symbols-rounded">account_circle</span>
+</a>
+
+    </nav>
+  </header>
+  <div id="aramaKutusu" class="arama-kutusu-gizli">
+    <input type="text" placeholder="Kitap ara..." />
+  </div>
+  
+
+  <main style="margin-top: 150px; max-width: 800px; margin-inline: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
+    <h1 style="color: purple;">Körlük</h1>
+    <img src="resim/kitap4.jpg" alt="Kitap 4" style="width: 100%; border-radius: 10px; margin: 20px 0;">
+    <p>
+      <strong>Yazar:</strong>Jose Saramago<br>
+      <strong>Yayınlanma Tarihi:</strong>23 Mayıs 2017<br>
+      <strong>Yayınevi:</strong> Can Yayınları<br>
+      <strong>Sayfa Sayısı:</strong> 336<br>
+    </p>
+    <p style="margin-top: 20px;">
+        Adı bilinmeyen bir ülkenin adı bilinmeyen bir kentinde, arabasının direksiyonunda trafik ışığının yeşile dönmesini bekleyen bir adam ansızın kör olur. Ancak karanlıklara değil, bembeyaz bir boşluğa gömülür. Arkasından, körlük salgını bütün kente, hatta bütün ülkeye yayılır. Ne yönetim kalır ülkede, ne de düzen; bütün körler karantinaya alınır.
+         Hayal bile edilemeyecek bir kaos, pislik, açlık ve zorbalık hüküm sürmektedir artık. Yaşam durmuştur, insanların tek çabası, ne pahasına olursa olsun hayatta kalmaktır. 
+    </p>
+    <a href="index.html" style="display: inline-block; margin-top: 30px; color: purple; text-decoration: underline;">← Ana sayfaya dön</a>
+  </main>
+  <section style="margin-top: 50px; background-color: #f9f9f9; padding: 30px; border-radius: 10px;">
+    <h2 style="color: purple;">Kitap İşlemleri</h2>
+    <button onclick="kitapEkle()">Kitap Ekle</button>
+    <button onclick="kitapSil()">Kitap Sil</button>
+  
+    <hr style="margin: 20px 0;">
+  
+    <h3>Kitabı Beğen</h3>
+    <button onclick="kitabiBegen()" id="begenBtn">Beğen</button>
+    <span id="begenDurumu" style="margin-left: 10px; color: purple;"></span>
+  
+    <hr style="margin: 20px 0;">
+  
+    <h3>Yorum Yap</h3>
+    <textarea id="yorumInput" rows="4" style="width: 100%; padding: 10px;" placeholder="Yorumunuzu yazın..."></textarea>
+    <button onclick="yorumEkle()">Yorumu Gönder</button>
+    <div id="yorumlar" style="margin-top: 20px;"></div>
+  
+    <hr style="margin: 30px 0;">
+  
+    <h3>Sosyal Medyada Paylaş</h3>
+    <div style="font-size: 24px; margin-top: 10px;">
+      <a href="#" title="WhatsApp" style="margin-right: 10px;">📱</a>
+      <a href="#" title="Twitter" style="margin-right: 10px;">🐦</a>
+      <a href="#" title="Facebook">📘</a>
+    </div>
+  
+    <hr style="margin: 30px 0;">
+    <h3> Kitap Etiketleri</h3>
+    <div id="etiketler" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+      <span class="etiket" data-kategori="Fantastik">Fantastik</span>
+      <span class="etiket" data-kategori="Gençlik">Gençlik</span>
+      <span class="etiket" data-kategori="Macera">Macera</span>
+      <span class="etiket" data-kategori="Yerli Yazar">Yerli Yazar</span>
+      <span class="etiket" data-kategori="Kolay Okunur">Kolay Okunur</span>
+    </div>
+    <p id="seciliKategori" style="margin-top: 10px; color: purple;"></p>
+    
+  
+    <hr style="margin: 30px 0;">
+  
+    <h3> Kitabı Puanla</h3>
+    <div id="puanlama" style="font-size: 30px; color: #ccc; cursor: pointer;">
+      <span data-puan="1">★</span>
+      <span data-puan="2">★</span>
+      <span data-puan="3">★</span>
+      <span data-puan="4">★</span>
+      <span data-puan="5">★</span>
+    </div>
+    <p id="puanMetni" style="margin-top: 10px; color: purple;"></p>
+
+    <hr style="margin: 30px 0;">
+<h3> Favori Kitaplarım</h3>
+<ul id="favoriListe" style="padding-left: 20px; list-style-type: square; color: purple;"></ul>
+
+<hr style="margin: 30px 0;">
+<h3>Okuma Durumu</h3>
+<div id="okumaDurumu" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+  <button class="okuma-btn" data-durum="Okunuyor">📖 Okunuyor</button>
+  <button class="okuma-btn" data-durum="Tamamlandı">✅ Tamamlandı</button>
+  <button class="okuma-btn" data-durum="Bırakıldı">❌ Bırakıldı</button>
+</div>
+<p id="seciliOkumaDurumu" style="margin-top: 10px; color: purple;"></p>
+
+<hr style="margin: 30px 0;">
+<h3>Kitap Tavsiyesi Al</h3>
+<button onclick="kitapTavsiyeEt()" style="padding: 8px 16px; border-radius: 5px; background-color: purple; color: white; border: none; cursor: pointer;">Tavsiye Al</button>
+<p id="tavsiyeSonucu" style="margin-top: 15px; color: darkslateblue;"></p>
+
+
+
+  </section>
+  
+  <script>
+    let begenildi = false;
+    let secilenPuan = 0;
+  
+    function kitapEkle() {
+      alert("Yeni kitap başarıyla eklendi (simülasyon).");
+    }
+  
+    function kitapSil() {
+      const onay = confirm("Bu kitabı silmek istediğinize emin misiniz?");
+      if (onay) {
+        alert("Kitap başarıyla silindi (simülasyon).");
+      }
+    }
+  
+    function kitabiBegen() {
+  const begenBtn = document.getElementById("begenBtn");
+  const begenDurumu = document.getElementById("begenDurumu");
+  const favoriListe = document.getElementById("favoriListe");
+
+  const kitapBaslik = document.querySelector("main h1")?.textContent || "Bilinmeyen Kitap";
+
+  begenildi = !begenildi;
+
+  if (begenildi) {
+    begenDurumu.textContent = "Beğenildi 💜";
+    begenBtn.textContent = "Beğenmekten Vazgeç";
+
+    
+    const yeniLi = document.createElement("li");
+    yeniLi.textContent = kitapBaslik;
+    yeniLi.id = "favoriKitap";
+    favoriListe.appendChild(yeniLi);
+  } else {
+    begenDurumu.textContent = "";
+    begenBtn.textContent = "Beğen";
+
+    const favoriKitap = document.getElementById("favoriKitap");
+    if (favoriKitap) favoriKitap.remove();
+  }
+}
+
+  
+    function yorumEkle() {
+      const yorumInput = document.getElementById("yorumInput");
+      const yorumlarDiv = document.getElementById("yorumlar");
+  
+      const yorum = yorumInput.value.trim();
+      if (yorum === "") {
+        alert("Lütfen boş yorum yapmayınız.");
+        return;
+      }
+  
+      const yorumKutu = document.createElement("div");
+      yorumKutu.style.marginTop = "10px";
+      yorumKutu.style.padding = "10px";
+      yorumKutu.style.background = "#fff";
+      yorumKutu.style.border = "1px solid #ddd";
+      yorumKutu.style.borderRadius = "5px";
+      yorumKutu.style.position = "relative";
+  
+      const yorumMetin = document.createElement("span");
+      yorumMetin.textContent = yorum;
+  
+      const silBtn = document.createElement("button");
+      silBtn.textContent = "Sil";
+      silBtn.style.position = "absolute";
+      silBtn.style.right = "10px";
+      silBtn.style.top = "10px";
+      silBtn.style.background = "#f88";
+      silBtn.style.border = "none";
+      silBtn.style.padding = "5px 10px";
+      silBtn.style.borderRadius = "5px";
+      silBtn.style.cursor = "pointer";
+      silBtn.onclick = () => yorumKutu.remove();
+  
+      yorumKutu.appendChild(yorumMetin);
+      yorumKutu.appendChild(silBtn);
+  
+      yorumlarDiv.appendChild(yorumKutu);
+      yorumInput.value = "";
+    }
+  
+    
+    const yildizlar = document.querySelectorAll('#puanlama span');
+    const puanMetni = document.getElementById('puanMetni');
+  
+    yildizlar.forEach((yildiz) => {
+      yildiz.addEventListener('click', () => {
+        secilenPuan = parseInt(yildiz.dataset.puan);
+        guncelleYildizlar();
+        puanMetni.textContent = `Puanınız: ${secilenPuan} / 5`;
+      });
+  
+      yildiz.addEventListener('mouseover', () => {
+        const hoverPuan = parseInt(yildiz.dataset.puan);
+        guncelleYildizlar(hoverPuan);
+      });
+  
+      yildiz.addEventListener('mouseout', () => {
+        guncelleYildizlar();
+      });
+    });
+  
+    function guncelleYildizlar(hoverPuan = secilenPuan) {
+      yildizlar.forEach((yildiz) => {
+        const puan = parseInt(yildiz.dataset.puan);
+        yildiz.style.color = puan <= hoverPuan ? 'gold' : '#ccc';
+      });
+    }
+  
+  const etiketler = document.querySelectorAll(".etiket");
+  const kategoriBilgi = document.getElementById("seciliKategori");
+
+  etiketler.forEach((etiket) => {
+    etiket.addEventListener("click", () => {
+      etiketler.forEach(e => e.classList.remove("secili"));
+      etiket.classList.add("secili");
+
+      const kategori = etiket.dataset.kategori;
+      kategoriBilgi.textContent = `"${kategori}" kategorisi seçildi.`;
+    });
+  });
+
+  
+  const okumaButonlari = document.querySelectorAll(".okuma-btn");
+  const okumaBilgi = document.getElementById("seciliOkumaDurumu");
+
+  okumaButonlari.forEach((buton) => {
+    buton.addEventListener("click", () => {
+      okumaButonlari.forEach(b => b.classList.remove("secili"));
+      buton.classList.add("secili");
+
+      const durum = buton.dataset.durum;
+      okumaBilgi.textContent = `Okuma durumu: ${durum}`;
+    });
+  });
+
+  
+  function kitapTavsiyeEt() {
+    const tavsiyeler = [
+      " 'Dune' - Bilim kurgu klasiği",
+      " 'Yüzüklerin Efendisi' - Fantastik",
+      " 'Sherlock Holmes' - Polisiye",
+      " 'Simyacı' - Ruhsal gelişim",
+      " 'Suç ve Ceza' - Klasik edebiyat",
+      " '1984' - Distopya"
+    ];
+
+    const rastgele = Math.floor(Math.random() * tavsiyeler.length);
+    document.getElementById("tavsiyeSonucu").textContent = `Tavsiye: ${tavsiyeler[rastgele]}`;
+  }
+
+
+  const aramaBtn = document.getElementById("aramaBtn");
+  const aramaKutusu = document.getElementById("aramaKutusu");
+  const aramaInput = document.getElementById("aramaInput");
+
+  aramaBtn.addEventListener("click", () => {
+    aramaKutusu.classList.toggle("arama-kutusu-goster");
+    if (aramaKutusu.classList.contains("arama-kutusu-goster")) {
+      aramaInput.focus();
+    }
+  });
+
+
+
+
+
+  </script>
+</body>
+</html>
